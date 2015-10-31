@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<title>Give input</title>
+</h:head>
+
+<h:body>
+	<h5>Create Student Form</h5>
+	<h:form>
+		<p>Name: <h:inputText id="name" value="#{studentBean.student.name}" required="true" ></h:inputText></p>
+		<p>CNP: <h:inputText id="cnp" value="#{studentBean.student.cnp}"></h:inputText></p>
+		<p>Place of Birth: <h:inputText id="pob" value="#{studentBean.student.placeOfBirth}"></h:inputText></p>
+		
+		<p><h:commandButton id="submit" value="Submit" action="#{studentBean.createStudent()}"></h:commandButton></p>
+		<p><h:message for="userName" id="error" style="color: red" showSummary="false" showDetail="true"></h:message></p>
+	</h:form>
+</h:body>
+
+</html>
