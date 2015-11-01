@@ -4,12 +4,12 @@ public class Project {
 
 	private String title;
 	private String description;
-	private Lecturer coordinator;
+	private String coordinator;
 	
 	public Project() {
 	}
 
-	public Project(String title, String description, Lecturer coordinator) {
+	public Project(String title, String description, String coordinator) {
 		this.title = title;
 		this.description = description;
 		this.coordinator = coordinator;
@@ -31,11 +31,11 @@ public class Project {
 		this.description = description;
 	}
 
-	public Lecturer getCoordinator() {
+	public String getCoordinator() {
 		return coordinator;
 	}
 
-	public void setCoordinator(Lecturer coordinator) {
+	public void setCoordinator(String coordinator) {
 		this.coordinator = coordinator;
 	}
 	

@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Give input</title>
+</h:head>
+
+<h:body>
+	<h3>Create Project Form</h3>
+	<h:form>
+		<p>Title: <h:inputText id="title" value="#{projectBean.project.title}" required="true" ></h:inputText></p>
+		<p>Description: <h:inputText id="description" value="#{projectBean.project.description}"></h:inputText></p>
+		<p>Coordinator: 
+		<h:selectOneMenu id="coordinators" value="#{projectBean.project.coordinator}">
+		<f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
+        <f:selectItems value="#{lecturersBean.lecturers}" />
+		</h:selectOneMenu>
+		</p>
+		<p><h:commandButton id="submit" value="Submit" action="#{projectBean.createProject()}"></h:commandButton></p>
+		<p><h:message for="userName" id="error" style="color: red" showSummary="false" showDetail="true"></h:message></p>
+	</h:form>
+</h:body>
+
+</html>
