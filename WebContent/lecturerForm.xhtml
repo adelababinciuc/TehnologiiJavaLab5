@@ -4,24 +4,21 @@
 	  xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>Student</title>
+	<title>Lecturer</title>
 	<link type="text/css" rel="stylesheet" href="../css/style.css" />
 </h:head>
 
 <h:body>
-	<h5>Create Student Form</h5>
+	<h3>Create Lecturer Form</h3>
 	<h:form>
 		<p:panelGrid columns="2" >
 			<p:outputLabel value="Name:" for="name" />
-			<p:inputText id="name" value="#{studentBean.student.name}" required="true" />
+			<p:inputText id="name" value="#{lecturerBean.lecturer.name}" required="true" />
 		
-			<p:outputLabel value="CNP:" for="cnp" />
-			<p:inputText id="cnp" value="#{studentBean.student.cnp}" />
-			
-			<p:outputLabel value="Place of Birth:" for="pob" />
-			<p:inputText id="pob" value="#{studentBean.student.placeOfBirth}" />
+			<p:outputLabel value="Specialization:" for="specialization" />
+			<p:inputText id="specialization" value="#{lecturerBean.lecturer.specialization}" />
         	
-			<p><h:commandButton id="submit" value="Submit" action="#{studentBean.createStudent()}"></h:commandButton></p>
+			<p><h:commandButton id="submit" value="Submit" action="#{lecturerBean.createLecturer()}"></h:commandButton></p>
 			<p><h:message for="name" id="error" style="color: red" showSummary="false" showDetail="true"></h:message></p>
 		</p:panelGrid>
 	</h:form>

@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Register</title>
+	<link type="text/css" rel="stylesheet" href="../css/style.css" />
+</h:head>
+
+<h:body>
+	<h3>Register Form</h3>
+	
+	<h:form>
+		<p:panelGrid columns="2" >
+			<p:outputLabel value="Username:" for="userName" />
+			<p:inputText id="userName" value="#{userBean.user.username}" required="true" />
+		
+			<p:outputLabel value="Password:" for="password"></p:outputLabel>
+			<p:inputText id="password" type="password" value="#{userBean.user.password}" required="true" />
+			
+			<p:outputLabel for="role" value="Role:" />
+        	<p:selectOneMenu id="role" value="#{userBean.user.role}" style="vertical-align:middle;" >
+            	<f:selectItem itemLabel="Select One" itemValue="" />
+            	<f:selectItems value="#{userBean.roles}" />
+        	</p:selectOneMenu>
+		
+			<p><h:commandButton id="submit" value="Register" action="#{userBean.createUser()}"></h:commandButton></p>
+			<p><h:message for="userName" id="errorUsername" style="color: red" showSummary="false" showDetail="true"></h:message></p>
+			<p><h:message for="password" id="errorPassword" style="color: red" showSummary="false" showDetail="true"></h:message></p>
+		</p:panelGrid>
+		
+	</h:form>
+</h:body>
+
+</html>

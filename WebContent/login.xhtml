@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Give input</title>
+	<style>
+		.ui-panelgrid td, .ui-panelgrid tr
+		{
+    		border-style: none !important
+		}
+	</style>
+</h:head>
+
+<h:body>
+	<h3>Login Form</h3>
+	<h:form>
+		<p:panelGrid columns="2" >
+			<p:outputLabel value="Username:" for="userName" />
+			<p:inputText id="userName" type="text" value="#{loginBean.user.username}" required="true" />
+		
+			<p:outputLabel value="Password:" for="password"></p:outputLabel>
+			<p:inputText id="password" type="password" value="#{loginBean.user.password}" required="true" />
+		
+			<p><h:commandButton id="submit" value="Login" action="#{loginBean.login()}"></h:commandButton></p>
+			<p><h:message for="userName" id="errorUsername" style="color: red" showSummary="false" showDetail="true"></h:message></p>
+			<p><h:message for="password" id="errorPassword" style="color: red" showSummary="false" showDetail="true"></h:message></p>
+		</p:panelGrid>
+		
+	</h:form>
+</h:body>
+
+</html>
