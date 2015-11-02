@@ -1,25 +1,24 @@
 package model;
 
 public class Lecturer {
-
-	private String id;
+	private int id;
 	private String name;
 	private String specialization;
 	
 	public Lecturer() {
 	}
 
-	public Lecturer(String name, String specialization) {
-
+	public Lecturer(int id, String name, String specialization) {
+		this.id = id;
 		this.name = name;
 		this.specialization = specialization;
 	}
 
-	public final String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public final void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

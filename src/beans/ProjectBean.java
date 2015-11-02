@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import model.Project;
+import persistanceService.LecturerDAO;
 import persistanceService.ProjectDAO;
 
 @ManagedBean(name="projectBean")
@@ -13,10 +14,12 @@ import persistanceService.ProjectDAO;
 public class ProjectBean{
 
 	private Project project;
+	private String chosenLecturerID;
 	private ProjectDAO projectDAO;
 
 	public ProjectBean(){
 		project = new Project(); 
+		chosenLecturerID = "";
 	}
 	
 	public Project getProject() {
@@ -27,9 +30,18 @@ public class ProjectBean{
 		this.project = project;
 	}
 
+	public String getChosenLecturerID() {
+		return chosenLecturerID;
+	}
+
+	public void setChosenLecturerID(String chosenLecturerID) {
+		this.chosenLecturerID = chosenLecturerID;
+	}
+
 	public void createProject(){
-		projectDAO = new ProjectDAO();
+		projectDAO = new ProjectDAO();		
 		try {
+			project.setCoordinator(new LecturerDAO().getLecturer(chosenLecturerID));
 			projectDAO.insertProject(project);
 		} catch (SQLException e) {
 			e.printStackTrace();

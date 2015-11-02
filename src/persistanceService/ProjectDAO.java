@@ -10,7 +10,7 @@ public class ProjectDAO extends DBConnection{
 
 		getConnection().createStatement().executeUpdate(
 				"insert into project (title, description, coordinator) values "
-				+ "('" + project.getTitle() + "', '" + project.getDescription() + "', '" + project.getCoordinator() + "')");
+				+ "('" + project.getTitle() + "', '" + project.getDescription() + "', '" + project.getCoordinator().getId() + "')");
 
 	  }
 }

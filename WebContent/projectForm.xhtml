@@ -1,24 +1,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:ui="http://java.sun.com/jsf/facelets">
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title>Give input</title>
+	<title>Project</title>
+	<link type="text/css" rel="stylesheet" href="../css/style.css" />
 </h:head>
 
 <h:body>
 	<h3>Create Project Form</h3>
 	<h:form>
-		<p>Title: <h:inputText id="title" value="#{projectBean.project.title}" required="true" ></h:inputText></p>
-		<p>Description: <h:inputText id="description" value="#{projectBean.project.description}"></h:inputText></p>
-		<p>Coordinator: 
-		<h:selectOneMenu id="coordinators" value="#{projectBean.project.coordinator}">
-		<f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
-        <f:selectItems value="#{lecturersBean.lecturers}" />
-		</h:selectOneMenu>
-		</p>
-		<p><h:commandButton id="submit" value="Submit" action="#{projectBean.createProject()}"></h:commandButton></p>
-		<p><h:message for="userName" id="error" style="color: red" showSummary="false" showDetail="true"></h:message></p>
+		<p:panelGrid columns="2" >
+			<p:outputLabel value="Title:" for="title" />
+			<p:inputText id="title" value="#{projectBean.project.title}" required="true" />
+		
+			<p:outputLabel value="Description:" for="description" />
+			<p:inputText id="description" value="#{projectBean.project.description}" />
+			
+			<p:outputLabel for="coordinator" value="Coordinator:" />
+        	<p:selectOneMenu id="coordinator" value="#{projectBean.chosenLecturerID}" style="vertical-align:middle;" >
+            	<f:selectItem itemLabel="Select One" itemValue="" />
+            	<f:selectItems value="#{lecturerBean.lecturers}" />
+        	</p:selectOneMenu>
+        	
+			<p><h:commandButton id="submit" value="Submit" action="#{projectBean.createProject()}"></h:commandButton></p>
+			<p><h:message for="title" id="error" style="color: red" showSummary="false" showDetail="true"></h:message></p>
+		</p:panelGrid>
 	</h:form>
 </h:body>
 
