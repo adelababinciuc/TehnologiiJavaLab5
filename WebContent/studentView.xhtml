@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Student View</title>
+</h:head>
+
+<h:body>
+	<h3>Students</h3>
+	<p:dataTable var="user" value="#{basicExampleBean.users}">
+
+		<p:columns value="#{basicExampleBean.columns}" var="column"
+			headerText="#{column.header}">
+
+			<h:outputText value="#{user[column.property]}" />
+
+		</p:columns>
+
+	</p:dataTable>
+</h:body>
+</html>

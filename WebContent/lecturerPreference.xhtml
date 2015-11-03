@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Lecturer Preferences</title>
+	<link type="text/css" rel="stylesheet" href="../css/style.css" />
+</h:head>
 
-</body>
+<h:body>
+	<h3>Lecturer Preferencess</h3>
+	<h:form>
+		<h:dataTable>
+			<h:column>
+				<ui:repeat value="#{lecturerPrefBean.studentBean.students}" var="student">
+					<h:column>
+						<p:outputLabel value="#{student.name}" />
+					</h:column>
+				</ui:repeat>
+			</h:column>
+			<h:column>
+				<ui:repeat value="#{lecturerPrefBean.prefNumbers}" var="pref">
+					<h:column>
+						<p:inputText id="preference" value="#{pref}" required="true" />
+					</h:column>
+				</ui:repeat>
+			</h:column>
+		</h:dataTable>
+		<p>
+			<h:commandButton id="submit" value="Submit"
+				action="#{lecturerPrefBean.savePreferences()}"></h:commandButton>
+		</p>
+		<p>
+			<h:message for="title" id="error" style="color: red"
+				showSummary="false" showDetail="true"></h:message>
+		</p>
+	</h:form>
+</h:body>
+
 </html>
