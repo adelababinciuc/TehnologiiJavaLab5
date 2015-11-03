@@ -9,33 +9,40 @@
 </h:head>
 
 <h:body>
-	<h3>Lecturer Preferencess</h3>
-	<h:form>
-		<h:dataTable>
-			<h:column>
-				<ui:repeat value="#{lecturerPrefBean.studentBean.students}" var="student">
+	<ui:composition template="/commonLayout.xhtml">
+		<ui:define name="content">
+		<br></br>
+			<h3>Lecturer Preferencess</h3>
+			<br></br>
+			<h:form>
+				<h:dataTable>
 					<h:column>
-						<p:outputLabel value="#{student.name}" />
+						<ui:repeat value="#{lecturerPrefBean.studentBean.students}"
+							var="student">
+							<h:column>
+								<p:outputLabel value="#{student.name}" />
+							</h:column>
+						</ui:repeat>
 					</h:column>
-				</ui:repeat>
-			</h:column>
-			<h:column>
-				<ui:repeat value="#{lecturerPrefBean.prefNumbers}" var="pref">
 					<h:column>
-						<p:inputText id="preference" value="#{pref}" required="true" />
+						<ui:repeat value="#{lecturerPrefBean.prefNumbers}" var="pref">
+							<h:column>
+								<p:inputText id="preference" value="#{pref}" required="true" />
+							</h:column>
+						</ui:repeat>
 					</h:column>
-				</ui:repeat>
-			</h:column>
-		</h:dataTable>
-		<p>
-			<h:commandButton id="submit" value="Submit"
-				action="#{lecturerPrefBean.savePreferences()}"></h:commandButton>
-		</p>
-		<p>
-			<h:message for="title" id="error" style="color: red"
-				showSummary="false" showDetail="true"></h:message>
-		</p>
-	</h:form>
+				</h:dataTable>
+				<p>
+					<h:commandButton id="submit" value="Submit"
+						action="#{lecturerPrefBean.savePreferences()}"></h:commandButton>
+				</p>
+				<p>
+					<h:message for="title" id="error" style="color: red"
+						showSummary="false" showDetail="true"></h:message>
+				</p>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 
 </html>

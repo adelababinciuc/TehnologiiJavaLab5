@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<body>
+	<ui:composition>
+
+		<h:form style="width:100%;">
+			<p:menubar>
+				<p:submenu label="Students">
+					<p:menuitem value="Add Student" url="/faces/studentForm.xhtml"></p:menuitem>
+					<p:menuitem value="View Students" url="/faces/studentView.xhtml"></p:menuitem>
+					<p:menuitem value="Student Preferences" url="/faces/studentPreference.xhtml"></p:menuitem>
+				</p:submenu>
+				<p:submenu label="Lecturers">
+					<p:menuitem value="Add Lecturer" url="/faces/lecturerForm.xhtml"></p:menuitem>
+					<p:menuitem value="View Lecturers" url="/faces/lecturerView.xhtml"></p:menuitem>
+					<p:menuitem value="Lecturer Preferences" url="/faces/lecturerPreference.xhtml"></p:menuitem>
+				</p:submenu>
+				<p:submenu label="Projects">
+					<p:menuitem value="Add Project" url="/faces/projectForm.xhtml"></p:menuitem>
+					<p:menuitem value="View Projects" url="/faces/projectView.xhtml"></p:menuitem>
+				</p:submenu>
+				<p:submenu label="Allocation">
+					<p:menuitem value="Allocation Results"></p:menuitem>
+				</p:submenu>
+			</p:menubar>
+		</h:form>
+
+	</ui:composition>
+</body>
+</html>

@@ -9,33 +9,40 @@
 </h:head>
 
 <h:body>
-	<h3>Student Preferences</h3>
-	<h:form>
-		<h:dataTable>
-			<h:column>
-				<ui:repeat value="#{studentPrefBean.projectBean.projects}" var="project">
+	<ui:composition template="/commonLayout.xhtml">
+		<ui:define name="content">
+		<br></br>
+			<h3>Student Preferences</h3>
+			<br></br>
+			<h:form>
+				<h:dataTable>
 					<h:column>
-						<p:outputLabel value="#{project.title}" />
+						<ui:repeat value="#{studentPrefBean.projectBean.projects}"
+							var="project">
+							<h:column>
+								<p:outputLabel value="#{project.title}" />
+							</h:column>
+						</ui:repeat>
 					</h:column>
-				</ui:repeat>
-			</h:column>
-			<h:column>
-				<ui:repeat value="#{studentPrefBean.prefNumbers}" var="pref">
 					<h:column>
-						<p:inputText id="preference" value="#{pref}" required="true" />
+						<ui:repeat value="#{studentPrefBean.prefNumbers}" var="pref">
+							<h:column>
+								<p:inputText id="preference" value="#{pref}" required="true" />
+							</h:column>
+						</ui:repeat>
 					</h:column>
-				</ui:repeat>
-			</h:column>
-		</h:dataTable>
-		<p>
-			<h:commandButton id="submit" value="Submit"
-				action="#{studentPrefBean.savePreferences()}"></h:commandButton>
-		</p>
-		<p>
-			<h:message for="title" id="error" style="color: red"
-				showSummary="false" showDetail="true"></h:message>
-		</p>
-	</h:form>
+				</h:dataTable>
+				<p>
+					<h:commandButton id="submit" value="Submit"
+						action="#{studentPrefBean.savePreferences()}"></h:commandButton>
+				</p>
+				<p>
+					<h:message for="title" id="error" style="color: red"
+						showSummary="false" showDetail="true"></h:message>
+				</p>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 
 </html>
