@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import model.Lecturer;
-import model.Student;
 
 public class LecturerPrefDAO extends DBConnection{
 

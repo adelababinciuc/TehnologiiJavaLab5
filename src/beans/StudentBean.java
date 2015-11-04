@@ -1,7 +1,10 @@
 package beans;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -14,6 +17,7 @@ import persistanceService.StudentDAO;
 public class StudentBean{
 
 	private Student student;
+	private List<Student> studentList;
 	private User user;
 	private StudentDAO studentDAO;
 
@@ -25,12 +29,25 @@ public class StudentBean{
 		student.setName(user.getUsername());
 	}
 	
+	@PostConstruct
+    public void init() {
+		studentList = getStudentListDB();
+    }
+	
 	public Student getStudent() {
 		return student;
 	}
 
 	public void setStudent(Student student) {
 		this.student = student;
+	}
+
+	public final List<Student> getStudentList() {
+		return studentList;
+	}
+
+	public final void setStudentList(List<Student> studentList) {
+		this.studentList = studentList;
 	}
 
 	public void createStudent(){
@@ -42,4 +59,14 @@ public class StudentBean{
 		}
 	}
 	
+	public List<Student> getStudentListDB(){
+		studentDAO = new StudentDAO();
+		studentList = new ArrayList<Student>();
+		try {
+			studentList = studentDAO.getStudentListDB();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return studentList;
+	}
 }

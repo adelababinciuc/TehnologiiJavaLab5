@@ -2,17 +2,26 @@ package model;
 
 public class Project {
 
+	private int id;
 	private String title;
 	private String description;
-	private Lecturer coordinator;
+	private int coordinator;
 	
 	public Project() {
 	}
 
-	public Project(String title, String description, Lecturer coordinator) {
+	public Project(int id, String title, String description, int coordinator) {
 		this.title = title;
 		this.description = description;
 		this.coordinator = coordinator;
+	}
+
+	public final int getId() {
+		return id;
+	}
+
+	public final void setId(int id) {
+		this.id = id;
 	}
 
 	public String getTitle() {
@@ -31,11 +40,11 @@ public class Project {
 		this.description = description;
 	}
 
-	public Lecturer getCoordinator() {
+	public int getCoordinator() {
 		return coordinator;
 	}
 
-	public void setCoordinator(Lecturer coordinator) {
+	public void setCoordinator(int coordinator) {
 		this.coordinator = coordinator;
 	}
 	

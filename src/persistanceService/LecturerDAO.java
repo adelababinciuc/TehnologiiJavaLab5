@@ -18,14 +18,27 @@ public class LecturerDAO extends DBConnection{
 				+ "('" + lecturer.getName() + "', '" + lecturer.getSpecialization() + "')");
 	}
 	
+	public List<Lecturer> getLecturerListDB() throws SQLException {
+		PreparedStatement ps = getConnection().prepareStatement("select * from lecturer");
+		
+		List<Lecturer> lecturerList = new ArrayList<Lecturer>();
+
+		ResultSet result = ps.executeQuery();
+		while (result.next()) {
+			lecturerList.add(new Lecturer(result.getInt("lecturer_id"), result.getString("name"), result.getString("specialization")));
+		}
+
+		return lecturerList;
+	}
+	
 	public List<SelectItem> getAllLecturers() throws SQLException {
 		PreparedStatement ps = getConnection().prepareStatement("select * from lecturer");
 		
 		List<SelectItem> lecturers = new ArrayList<SelectItem>();
 
-		ResultSet rs = ps.executeQuery();
-		while (rs.next()) {
-			lecturers.add(new SelectItem(rs.getString("lecturer_id"), rs.getString("name")));
+		ResultSet result = ps.executeQuery();
+		while (result.next()) {
+			lecturers.add(new SelectItem(result.getString("lecturer_id"), result.getString("name")));
 		}
 
 		return lecturers;

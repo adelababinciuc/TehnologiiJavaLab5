@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.model.SelectItem;
@@ -16,6 +17,7 @@ import persistanceService.LecturerDAO;
 public class LecturerBean{
 
 	private Lecturer lecturer;
+	private List<Lecturer> lecturerList;
 	private List<SelectItem> lecturers;
 	private LecturerDAO lecturerDAO;
 
@@ -24,12 +26,25 @@ public class LecturerBean{
 		lecturers = getAllLecturers();
 	}
 	
+	@PostConstruct
+    public void init() {
+		lecturerList = getLecturerListDB();
+    }
+	
 	public Lecturer getLecturer() {
 		return lecturer;
 	}
 
 	public void setLecturer(Lecturer Lecturer) {
 		this.lecturer = Lecturer;
+	}
+
+	public final List<Lecturer> getLecturerList() {
+		return lecturerList;
+	}
+
+	public final void setLecturerList(List<Lecturer> lecturerList) {
+		this.lecturerList = lecturerList;
 	}
 
 	public final List<SelectItem> getLecturers() {
@@ -47,6 +62,17 @@ public class LecturerBean{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public List<Lecturer> getLecturerListDB(){
+		lecturerDAO = new LecturerDAO();
+		lecturerList = new ArrayList<Lecturer>();
+		try {
+			lecturerList = lecturerDAO.getLecturerListDB();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return lecturerList;
 	}
 	
 	public List<SelectItem> getAllLecturers(){

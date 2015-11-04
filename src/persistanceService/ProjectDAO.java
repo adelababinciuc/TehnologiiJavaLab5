@@ -16,9 +16,22 @@ public class ProjectDAO extends DBConnection{
 
 		getConnection().createStatement().executeUpdate(
 				"insert into project (title, description, coordinator) values "
-				+ "('" + project.getTitle() + "', '" + project.getDescription() + "', '" + project.getCoordinator().getId() + "')");
+				+ "('" + project.getTitle() + "', '" + project.getDescription() + "', '" + project.getCoordinator() + "')");
 
 	  }
+	
+	public List<Project> getProjectListDB() throws SQLException {
+		PreparedStatement ps = getConnection().prepareStatement("select * from project");
+		
+		List<Project> projectList = new ArrayList<Project>();
+
+		ResultSet result = ps.executeQuery();
+		while (result.next()) {
+			projectList.add(new Project(result.getInt("project_id"), result.getString("title"), result.getString("description"), Integer.parseInt(result.getString("coordinator"))));
+		}
+
+		return projectList;
+	}
 	
 	public List<SelectItem> getAllProjects() throws SQLException {
 		PreparedStatement ps = getConnection().prepareStatement("select * from project");

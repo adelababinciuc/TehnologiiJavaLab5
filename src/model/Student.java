@@ -2,7 +2,7 @@ package model;
 
 public class Student {
 
-	private String id;
+	private int id;
 	private String name;
 	private String cnp;
 	private String placeOfBirth;
@@ -10,18 +10,18 @@ public class Student {
 	public Student() {
 	}
 
-	public Student(String id, String name, String cnp, String placeOfBirth) {
+	public Student(int id, String name, String cnp, String placeOfBirth) {
 		this.id = id;
 		this.name = name;
 		this.cnp = cnp;
 		this.placeOfBirth = placeOfBirth;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
